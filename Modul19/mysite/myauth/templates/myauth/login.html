@@ -1,0 +1,19 @@
+{% extends 'myauth/base.html' %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block body %}
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">Login</button>
+
+    </form>
+    <div>
+        <a href="{% url 'Shopapp:main-menu'%}"> Back to main menu </a>
+    </div>
+{% endblock %}

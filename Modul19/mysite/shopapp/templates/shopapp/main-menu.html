@@ -1,0 +1,60 @@
+{% extends 'shopapp/base.html' %}
+
+{% block title %}
+  Main menu
+{% endblock %}
+
+
+{% block body %}
+  <h1>The main menu of the store!</h1>
+  <div>
+    Users:
+    <ul>
+      <a href="{% url 'myauth:about-me' %}">About me</a>
+    </ul>
+    <ul>
+      <a href="{% url 'myauth:profiles_list' %}">Profile List</a>
+    </ul>
+  </div>
+  <div>
+    Log in or register:
+    <ul>
+      <a href="{% url 'myauth:login' %}">Log in</a>
+    </ul>
+  </div>
+  <div>
+      <ul>
+        <a href="{% url 'myauth:register' %}">Register</a>
+      </ul>
+  </div>
+  <div>
+    Orders:
+    <ul>
+      <a href="{% url 'Shopapp:order_create' %}">Order create</a>
+    </ul>
+    <div>
+      <ul>
+        <a href="{% url 'Shopapp:order_list' %}">Orders list</a>
+      </ul>
+    </div>
+  </div>
+
+  <div>
+    Products:
+    {% if perms.shopapp.add_product %}
+      <ul>
+        <a href="{% url 'Shopapp:product_create' %}">Product create</a>
+      </ul>
+    {% endif %}
+    <div>
+      <ul>
+        <a href="{% url 'Shopapp:products_list' %}">Product list</a>
+      </ul>
+    </div>
+  </div>
+
+  <div>
+    Time running: {{time_running}}
+  </div>
+
+{% endblock %}

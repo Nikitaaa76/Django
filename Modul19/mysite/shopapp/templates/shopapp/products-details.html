@@ -1,0 +1,60 @@
+{% extends 'shopapp/base.html' %}
+
+{% load i18n %}
+
+{% block title %}
+    {% translate "Product" %} #{{ product.pk }}
+{% endblock %}
+
+{% block body %}
+    <h1>{% translate "Product" %} <strong>{{ product.name }}</strong></h1>
+    <div>
+        <div>{% translate "Description" %}: <em>{{ product.description }}</em></div>
+        <div>{% translate "Price" %}: {{ product.price }}</div>
+        <div>{% translate "Discount" %}: {{ product.discount }}</div>
+        <div>{% translate "Archived" %}: {{ product.archived }}</div>
+        {% if product.preview %}
+          <img src="{{product.preview.url}}" alt="{{product.preview.name}}">
+        {% endif %}
+    </div>
+    </div>
+        {% blocktranslate count preview_count=product.images.all|length %}
+            There is only one image
+            {% plural %}
+            There are {{ preview_count }} images
+        {% endblocktranslate %}
+        <h3>{% translate "Images" %}:</h3>
+        <div>
+           {% for img in product.images.all %}
+            <div>
+                <img src="{{ img.image.url }}" alt="{{ img.image.name }}">
+                <div>{{ img.description }}"</div>
+            </div>
+        {% empty %}
+            <div>{% translate "No images uploaded yet" %}</div>
+            {% endfor %}
+        </div>
+    {% if perms.shopapp.add_product %}
+        {% url 'Shopapp:product_update' pk=product.pk as Update_products %}
+        {% url 'Shopapp:product_delete' pk=product.pk as Archived_product %}
+        {% blocktranslate %}
+        <div>
+            <a href="{{ Update_products }}"> Update products </a>
+        </div>
+
+        <div>
+            <a href="{{ Archived_product }}"> Archived product </a>
+        </div>
+        {% endblocktranslate %}
+    {% endif %}
+    <div>
+        {% url 'Shopapp:products_list' as back_to_products %}
+        {% url 'Shopapp:main-menu' as back_to_main_menu %}
+        {% blocktranslate %}
+        <a href="{{ back_to_products }}"> Back to products list</a>
+    </div>
+    <div>
+        <a href="{{ back_to_main_menu }}"> Back to main menu </a>
+        {% endblocktranslate %}
+    </div>
+{% endblock %}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<django-objects version="1.0">
+    <object model="shopapp.product" pk="1">
+        <field name="name" type="CharField">Samsung</field>
+        <field name="description" type="TextField">dsfsdfdsfdsf</field>
+        <field name="price" type="DecimalField">2222.00</field>
+        <field name="discount" type="SmallIntegerField">12</field>
+        <field name="created_at" type="DateTimeField">2023-07-11T16:57:45.471679+00:00</field>
+        <field name="archived" type="BooleanField">False</field>
+        <field name="created_by" rel="ManyToOneRel" to="auth.user">
+            <None></None>
+        </field>
+        <field name="preview" type="FileField"></field>
+    </object>
+    <object model="shopapp.product" pk="2">
+        <field name="name" type="CharField">Iphone11</field>
+        <field name="description" type="TextField">dsfdsvccc</field>
+        <field name="price" type="DecimalField">3333.00</field>
+        <field name="discount" type="SmallIntegerField">23</field>
+        <field name="created_at" type="DateTimeField">2023-07-11T16:58:02.833724+00:00</field>
+        <field name="archived" type="BooleanField">False</field>
+        <field name="created_by" rel="ManyToOneRel" to="auth.user">
+            <None></None>
+        </field>
+        <field name="preview" type="FileField"></field>
+    </object>
+    <object model="shopapp.product" pk="3">
+        <field name="name" type="CharField">SamsungA51</field>
+        <field name="description" type="TextField">dsfdsf</field>
+        <field name="price" type="DecimalField">1255.00</field>
+        <field name="discount" type="SmallIntegerField">34</field>
+        <field name="created_at" type="DateTimeField">2023-07-11T16:58:26.921326+00:00</field>
+        <field name="archived" type="BooleanField">False</field>
+        <field name="created_by" rel="ManyToOneRel" to="auth.user">
+            <None></None>
+        </field>
+        <field name="preview" type="FileField"></field>
+    </object>
+</django-objects>
